@@ -10,7 +10,7 @@ namespace Unicam.Paradigmi.Test.Examples
 {
     public class GestioneEventi
     {
-        public static void RunExample()
+        public void RunExample()
         {
             //*************************************//
 
