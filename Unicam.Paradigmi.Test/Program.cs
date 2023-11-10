@@ -4,6 +4,7 @@
 
 using Unicam.Paradigmi.Abstractions;
 using Unicam.Paradigmi.Test.Examples;
+using Unicam.Paradigmi.Test.Models;
 
 var examples = new List<IExample>();
 examples.Add(new InizialializzazioneClassiExample());
@@ -14,6 +15,7 @@ foreach(var example in examples)
     //InizialializzazioneClassiExample test = (InizialializzazioneClassiExample)example;
     example.RunExample();
 }
+
 
 Console.ReadLine();
 
