@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Collections;
 using Unicam.Paradigmi.Test.Examples;
 using Unicam.Paradigmi.Test.Models;
+using Unicam.Paradigmi.Abstractions;
 
 namespace Unicam.Paradigmi.Test.Examples
 {
-    public class InizialializzazioneClassi
+    public class InizialializzazioneClassiExample : IExample
     {
         public void RunExample()
         {

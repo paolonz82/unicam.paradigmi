@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Unicam.Paradigmi.Abstractions\Unicam.Paradigmi.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>

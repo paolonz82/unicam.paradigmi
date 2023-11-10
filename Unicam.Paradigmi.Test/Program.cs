@@ -2,13 +2,20 @@
 //REFERENZIO I NAMESPACE O CON LO USING O LA CLASSE SPECIFICA CON IL NOME COMPLETO
 //using Unicam.Paradigmi.Test.Models;
 
+using Unicam.Paradigmi.Abstractions;
 using Unicam.Paradigmi.Test.Examples;
 
-var esempioInizializzazione = new InizialializzazioneClassi();
-esempioInizializzazione.RunExample();
+var examples = new List<IExample>();
+examples.Add(new InizialializzazioneClassiExample());
+examples.Add(new GestioneEventiExample());
 
-var esempioGestioneEventi = new GestioneEventi();
-esempioGestioneEventi.RunExample();
+foreach(var example in examples)
+{
+    //InizialializzazioneClassiExample test = (InizialializzazioneClassiExample)example;
+    example.RunExample();
+}
+
+Console.ReadLine();
 
 
 
