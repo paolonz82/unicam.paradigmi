@@ -13,8 +13,14 @@ namespace Unicam.Paradigmi.Test.Examples
     {
         public void RunExample()
         {
-            string path = "Content\\alunni_not_Exists.csv";
+            string path = "Content\\alunni.csv";
             var listaAlunni = ReadAlunniFromCsv(path);
+            //var listaAlunni = ReadAlunniCsvFromStream(path);
+            var enumerableAlunni = ReadAlunniWithYield(path);
+            foreach (var alunno in enumerableAlunni)
+            {
+                Console.WriteLine(alunno.Nome);
+            }
 
             listaAlunni.Add(new Alunno()
             {
@@ -25,6 +31,7 @@ namespace Unicam.Paradigmi.Test.Examples
             });
 
             SaveAlunniInCsv(path, listaAlunni);
+            
 
             Console.ReadLine();
         }
@@ -38,6 +45,55 @@ namespace Unicam.Paradigmi.Test.Examples
                 sb.AppendLine($"{alunno.Nome};{alunno.Cognome};{alunno.Matricola};{alunno.DataNascita:dd/MM/yyyy}");
             }
             System.IO.File.WriteAllText(path, sb.ToString());
+        }
+
+        private IEnumerable<Alunno> ReadAlunniWithYield(string path)
+        {
+            using (FileStream fileStream = new FileStream(path, FileMode.Open))
+            {
+                using (StreamReader reader = new StreamReader(fileStream))
+                {
+                    int i = 0;
+                    while (true)
+                    {
+                        string line = reader.ReadLine();
+                        if (line == null)
+                        {
+                            break;
+                        }
+                        if (i > 0)
+                        {
+                            yield return new Alunno(line);
+                        }
+                        i++;
+                    }
+                }
+            }
+        }
+        private List<Alunno> ReadAlunniCsvFromStream(string path)
+        {
+            List<Alunno> list = new List<Alunno>();
+            using(FileStream fileStream = new FileStream(path, FileMode.Open))
+            {
+                using(StreamReader reader = new StreamReader(fileStream))
+                {
+                    int i = 0;
+                    while (true)
+                    {
+                        string line = reader.ReadLine();
+                        if (line == null)
+                        {
+                            break;
+                        }
+                        if (i > 0)
+                        {
+                            list.Add(new Alunno(line));
+                        }
+                        i++;
+                    }
+                }   
+            }
+            return list;
         }
 
         private List<Alunno> ReadAlunniFromCsv(string path)
