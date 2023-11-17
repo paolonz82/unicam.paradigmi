@@ -11,4 +11,10 @@
     <ProjectReference Include="..\Unicam.Paradigmi.Abstractions\Unicam.Paradigmi.Abstractions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Content\alunni.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -7,8 +7,9 @@ using Unicam.Paradigmi.Test.Examples;
 using Unicam.Paradigmi.Test.Models;
 
 var examples = new List<IExample>();
-examples.Add(new InizialializzazioneClassiExample());
-examples.Add(new GestioneEventiExample());
+/*examples.Add(new InizialializzazioneClassiExample());
+examples.Add(new GestioneEventiExample());*/
+examples.Add(new FileManagementExample());
 
 foreach(var example in examples)
 {
