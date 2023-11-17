@@ -8,10 +8,11 @@ using Unicam.Paradigmi.Test.Models;
 
 var examples = new List<IExample>();
 /*examples.Add(new InizialializzazioneClassiExample());
-examples.Add(new GestioneEventiExample());*/
-examples.Add(new FileManagementExample());
+examples.Add(new GestioneEventiExample());
+examples.Add(new FileManagementExample());*/
+examples.Add(new JsonSerializerExample());
 
-foreach(var example in examples)
+foreach (var example in examples)
 {
     //InizialializzazioneClassiExample test = (InizialializzazioneClassiExample)example;
     example.RunExample();

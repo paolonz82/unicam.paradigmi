@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unicam.Paradigmi.Abstractions;
+using Unicam.Paradigmi.Test.Exceptions;
 using Unicam.Paradigmi.Test.Models;
 
 namespace Unicam.Paradigmi.Test.Examples
@@ -12,7 +13,8 @@ namespace Unicam.Paradigmi.Test.Examples
     {
         public void RunExample()
         {
-            var listaAlunni = ReadAlunniFromCsv("Content\\alunni.csv");
+            string path = "Content\\alunni_not_Exists.csv";
+            var listaAlunni = ReadAlunniFromCsv(path);
 
             listaAlunni.Add(new Alunno()
             {
@@ -22,7 +24,7 @@ namespace Unicam.Paradigmi.Test.Examples
                 DataNascita = new DateTime(2000,10,10)
             });
 
-            SaveAlunniInCsv("Content\\alunni.csv",listaAlunni);
+            SaveAlunniInCsv(path, listaAlunni);
 
             Console.ReadLine();
         }
@@ -46,15 +48,21 @@ namespace Unicam.Paradigmi.Test.Examples
             //Path Relativo
             var list = new List<Alunno>();
             //string contentAlunni = System.IO.File.ReadAllText("Content\\alunni.csv");
-            string[] righeAlunni = System.IO.File.ReadAllLines(path);
-            int i = 0;
-            foreach(var riga in righeAlunni)
-            {
-                if (i > 0)
+            if (File.Exists(path)) { 
+                string[] righeAlunni = System.IO.File.ReadAllLines(path);
+                int i = 0;
+                foreach (var riga in righeAlunni)
                 {
-                    list.Add(new Alunno(riga));
+                    if (i > 0)
+                    {
+                        list.Add(new Alunno(riga));
+                    }
+                    i++;
                 }
-                i++;
+            }
+            else
+            {
+                throw new FileErrorException("Impossibile aprire il path", path);
             }
             return list;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -26,6 +27,10 @@ namespace Unicam.Paradigmi.Test.Models
         public string Nome { get; set; }
         public string Cognome { get; set; }
         public string Matricola { get; set; }
+        [JsonProperty("data_nascita")]
         public DateTime DataNascita { get; set; }
+
+        [JsonProperty("indirizzo_residenza", NullValueHandling = NullValueHandling.Ignore)]
+        public Indirizzo IndirizzoResidenza { get; set; }
     }
 }
