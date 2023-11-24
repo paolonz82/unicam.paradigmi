@@ -5,7 +5,9 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unicam.Paradigmi.Test", "Unicam.Paradigmi.Test\Unicam.Paradigmi.Test.csproj", "{BF0C6D76-ABC7-41FC-B076-B04A1017EF97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unicam.Paradigmi.Abstractions", "Unicam.Paradigmi.Abstractions\Unicam.Paradigmi.Abstractions.csproj", "{73C15E21-2AD9-41C9-A5D6-2D4CF01D88A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unicam.Paradigmi.Abstractions", "Unicam.Paradigmi.Abstractions\Unicam.Paradigmi.Abstractions.csproj", "{73C15E21-2AD9-41C9-A5D6-2D4CF01D88A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unicam.Paradigmi.Models", "Unicam.Paradigmi.Models\Unicam.Paradigmi.Models.csproj", "{BAB5D7EE-70A8-4E56-A41D-B606B9FFD5C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{73C15E21-2AD9-41C9-A5D6-2D4CF01D88A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73C15E21-2AD9-41C9-A5D6-2D4CF01D88A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73C15E21-2AD9-41C9-A5D6-2D4CF01D88A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAB5D7EE-70A8-4E56-A41D-B606B9FFD5C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAB5D7EE-70A8-4E56-A41D-B606B9FFD5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAB5D7EE-70A8-4E56-A41D-B606B9FFD5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAB5D7EE-70A8-4E56-A41D-B606B9FFD5C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
