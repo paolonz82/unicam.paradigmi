@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,9 @@ namespace Unicam.Paradigmi.Models.Configurations
         {
             builder.ToTable("Dipendenti");
             builder.HasKey(k => k.IdDipendente);
+            builder.HasOne(x => x.AziendaDoveLavora)
+                .WithMany(x => x.Dipendenti)
+                .HasForeignKey(x => x.IdAzienda);
         }
     }
 }

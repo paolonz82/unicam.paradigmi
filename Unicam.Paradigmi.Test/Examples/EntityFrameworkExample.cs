@@ -16,13 +16,41 @@ namespace Unicam.Paradigmi.Test.Examples
         public void RunExample()
         {
             var ctx = new MyDbContext();
-           var aziende = ctx.Aziende.AsNoTracking().ToList();
+            LoadWithExplicitLoading(ctx);
+            LoadWithEeagerLoading(ctx);
+            LoadWithLazyLoading(ctx);
+            //var aziende = ctx.Aziende.AsNoTracking().ToList();
             //QueryDiFiltro(ctx);
             //AddAzienda(ctx);
             //EditAziendaCompleta(ctx);
             EditProprietaAzienda(ctx);
             //DeleteAzienda(ctx);
            // UpdateConLettura(ctx);
+        }
+
+        public void LoadWithLazyLoading(MyDbContext ctx)
+        {
+            var dipendente = ctx.Dipendenti
+             .Where(w => w.IdDipendente == 1).First();
+
+            var nomeCittaAzienda = dipendente.AziendaDoveLavora.Citta;
+        }
+
+        public void LoadWithExplicitLoading(MyDbContext ctx)
+        {
+            var dipendente = ctx.Dipendenti
+                .Where(w => w.IdDipendente == 1).First();
+
+            ctx.Entry(dipendente)
+                .Reference(i => i.AziendaDoveLavora)
+                .Load();
+        }
+
+        public void LoadWithEeagerLoading(MyDbContext ctx)
+        {
+            var dipendente = ctx.Dipendenti
+                .Include(i => i.AziendaDoveLavora)
+                .Where(w => w.IdDipendente == 1).First();
         }
 
         private void UpdateConLettura(MyDbContext ctx)

@@ -15,5 +15,8 @@ namespace Unicam.Paradigmi.Models.Entities
         public string RagioneSociale { get; set; }
         public string Citta { get; set; }
         public string Cap { get; set; }
+
+        public virtual ICollection<Dipendente> Dipendenti { get; set; }
+
     }
 }

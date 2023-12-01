@@ -13,5 +13,7 @@ namespace Unicam.Paradigmi.Models.Entities
         public string Nome { get; set; }
         public string Cognome { get; set; }
         public DateTime DataNascita { get; set; }
+
+        public virtual Azienda AziendaDoveLavora { get; set; }
     }
 }
