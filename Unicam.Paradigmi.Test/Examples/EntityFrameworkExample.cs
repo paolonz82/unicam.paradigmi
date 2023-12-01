@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Unicam.Paradigmi.Abstractions;
 using Unicam.Paradigmi.Models.Context;
 using Unicam.Paradigmi.Models.Entities;
+using Unicam.Paradigmi.Models.Repositories;
 
 namespace Unicam.Paradigmi.Test.Examples
 {
@@ -16,6 +17,7 @@ namespace Unicam.Paradigmi.Test.Examples
         public void RunExample()
         {
             var ctx = new MyDbContext();
+            
             LoadWithExplicitLoading(ctx);
             LoadWithEeagerLoading(ctx);
             LoadWithLazyLoading(ctx);

@@ -9,7 +9,7 @@ using Unicam.Paradigmi.Test.Models;
 var examples = new List<IExample>();
 /*examples.Add(new InizialializzazioneClassiExample());
 examples.Add(new GestioneEventiExample());*/
-examples.Add(new EntityFrameworkExample());
+examples.Add(new LinqExample());
 //examples.Add(new JsonSerializerExample());
 
 foreach (var example in examples)
