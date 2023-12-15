@@ -13,7 +13,36 @@ namespace Unicam.Paradigmi.Test.Examples
 {
     public class EntityFrameworkExample : IExample
     {
-        
+        public EntityFrameworkExample()
+        {
+            DbContext = new MyDbContext();
+        }
+
+        public MyDbContext DbContext { get; set; }
+        public async Task RunExampleAsync()
+        {
+
+        }
+
+        public async Task<Dipendente> GetDipendenteByCognomeAsync(string cognome)
+        {
+            //TODO : DA FARE
+            return null;
+        }
+
+        public async Task<Azienda> GetAziendaByIdAsync(int id)
+        {
+            //TODO : DA FARE
+            return null;
+        }
+
+        public async Task AddAziendaAsync(Azienda azienda)
+        {
+            //TODO : DA FARE
+            
+        }
+
+
         public void RunExample()
         {
             var ctx = new MyDbContext();

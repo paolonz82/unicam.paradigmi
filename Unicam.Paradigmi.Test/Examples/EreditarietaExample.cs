@@ -10,6 +10,10 @@ namespace Unicam.Paradigmi.Test.Examples
 {
     public class EreditarietaExample : IExample
     {
+        public async Task RunExampleAsync()
+        {
+
+        }
         public void RunExample()
         {
             List<Veicolo> veicoli = new List<Veicolo>();

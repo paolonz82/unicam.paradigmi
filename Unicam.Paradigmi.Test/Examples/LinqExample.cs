@@ -14,11 +14,19 @@ namespace Unicam.Paradigmi.Test.Examples
 {
     public class LinqExample : IExample
     {
-        
+        public async Task RunExampleAsync()
+        {
+
+        }
+
         public void RunExample()
         {
             var ctx = new MyDbContext();
 
+            Func<Dipendente, bool> queryPerCognome = 
+                (dipendente) => dipendente.Cognome == "Paoloni";
+            
+            ctx.Dipendenti.Where(queryPerCognome);
             var maxDateNascita = ctx.Dipendenti
                 .Max(m => m.DataNascita);
 

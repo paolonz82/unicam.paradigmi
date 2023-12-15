@@ -10,6 +10,10 @@ namespace Unicam.Paradigmi.Test.Examples
 {
     public class RisultatoGenericoExample : IExample
     {
+        public async Task RunExampleAsync()
+        {
+
+        }
         public void RunExample()
         {
             

@@ -12,6 +12,10 @@ namespace Unicam.Paradigmi.Test.Examples
 {
     public class JsonSerializerExample : IExample
     {
+        public async Task RunExampleAsync()
+        {
+
+        }
         public void RunExample()
         {
             var jsonSerializerSettings = new JsonSerializerSettings()

@@ -8,7 +8,7 @@ using Unicam.Paradigmi.Models.Context;
 
 namespace Unicam.Paradigmi.Models.Repositories
 {
-    public abstract class GenericRepository<T> where T:class
+    public abstract class GenericRepository<T> where T : class
     {
         protected MyDbContext _ctx;
         public GenericRepository(MyDbContext ctx)

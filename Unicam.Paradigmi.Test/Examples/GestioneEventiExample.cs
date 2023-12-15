@@ -11,6 +11,10 @@ namespace Unicam.Paradigmi.Test.Examples
 {
     public class GestioneEventiExample : IExample
     {
+        public async Task RunExampleAsync()
+        {
+
+        }
         public void RunExample()
         {
             //*************************************//

@@ -11,6 +11,10 @@ namespace Unicam.Paradigmi.Test.Examples
 {
     public class FileManagementExample : IExample
     {
+        public async Task RunExampleAsync()
+        {
+
+        }
         public void RunExample()
         {
             string path = "Content\\alunni.csv";
