@@ -21,25 +21,36 @@ namespace Unicam.Paradigmi.Test.Examples
         public MyDbContext DbContext { get; set; }
         public async Task RunExampleAsync()
         {
-
+            var dipendente = await GetDipendenteByCognomeAsync("Paoloni");
+            var azienda = await GetAziendaByIdAsync(1);
+            var nuovaAzienda = new Azienda()
+            {
+                Cap = "12345",
+                Citta = "Macerata",
+                RagioneSociale = "Prova Inserimento"
+            };
+            await AddAziendaAsync(nuovaAzienda);
         }
 
         public async Task<Dipendente> GetDipendenteByCognomeAsync(string cognome)
         {
-            //TODO : DA FARE
-            return null;
+            return await DbContext
+                .Dipendenti
+                .Where(w => w.Cognome == cognome).FirstAsync();
+            
         }
 
         public async Task<Azienda> GetAziendaByIdAsync(int id)
         {
-            //TODO : DA FARE
-            return null;
+            return await DbContext
+                .Aziende
+                .Where(w=>w.IdAzienda==id).FirstAsync();
         }
 
         public async Task AddAziendaAsync(Azienda azienda)
         {
-            //TODO : DA FARE
-            
+            await DbContext.Aziende.AddAsync(azienda);
+            await DbContext.SaveChangesAsync();
         }
 
 
