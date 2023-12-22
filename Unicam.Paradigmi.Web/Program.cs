@@ -1,5 +1,8 @@
 
 using Microsoft.AspNetCore.Builder;
+using Unicam.Paradigmi.Application.Abstractions.Services;
+using Unicam.Paradigmi.Application.Middlewares;
+using Unicam.Paradigmi.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +12,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped< IAziendaService, AziendaService >();
 var app = builder.Build();
 
 //INIZIALIZZO I MIDDLEWARE
 
+app.UseMiddleware<MiddlewareExample>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
