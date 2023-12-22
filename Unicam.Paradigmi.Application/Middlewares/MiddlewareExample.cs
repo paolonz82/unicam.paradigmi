@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Unicam.Paradigmi.Application.Abstractions.Services;
+using Unicam.Paradigmi.Application.Options;
 using Unicam.Paradigmi.Application.Services;
 
 namespace Unicam.Paradigmi.Application.Middlewares
@@ -21,8 +23,12 @@ namespace Unicam.Paradigmi.Application.Middlewares
 
         public async Task Invoke(HttpContext context
             , IAziendaService aziendaService
+            , IConfiguration configuration
+            , IOptions<EmailOption> emailOption
             )
         {
+            Console.WriteLine(emailOption.Value.Host);
+            context.RequestServices.GetRequiredService<IAziendaService>();
             //Implementiamo il codice effettivo del nostro middleware
 
             //Per andare al middleware successivo dobbiamo chiamare _next.Invoke();
