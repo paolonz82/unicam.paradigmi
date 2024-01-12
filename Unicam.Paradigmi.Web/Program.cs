@@ -1,10 +1,15 @@
 
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using System.Xml.Linq;
 using Unicam.Paradigmi.Application.Abstractions.Services;
 using Unicam.Paradigmi.Application.Middlewares;
 using Unicam.Paradigmi.Application.Options;
 using Unicam.Paradigmi.Application.Services;
+using Unicam.Paradigmi.Application.Validators;
 using Unicam.Paradigmi.Models.Context;
 using Unicam.Paradigmi.Models.Repositories;
 
@@ -15,6 +20,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssembly(
+    AppDomain.CurrentDomain.GetAssemblies().
+           SingleOrDefault(assembly => assembly.GetName().Name == "Unicam.Paradigmi.Application")
+    );
+
 
 builder.Services.AddDbContext<MyDbContext>(conf=>
 {

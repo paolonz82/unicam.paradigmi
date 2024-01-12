@@ -1,9 +1,11 @@
-﻿using Unicam.Paradigmi.Models.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+using Unicam.Paradigmi.Models.Entities;
 
 namespace Unicam.Paradigmi.Application.Models.Requests
 {
     public class CreateAziendaRequest
     {
+        
         public string RagioneSociale { get; set; } = string.Empty;
         public string Citta { get; set; } = string.Empty;
         public string Cap { get; set; } = string.Empty;

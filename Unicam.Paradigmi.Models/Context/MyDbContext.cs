@@ -27,11 +27,13 @@ namespace Unicam.Paradigmi.Models.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            /*
-            optionsBuilder
-                //.UseLazyLoadingProxies()
-                .UseSqlServer("data source=localhost;Initial catalog=paradigmi;User Id=paradigmi;Password=paradigmi;TrustServerCertificate=True");
-            */
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder
+               //.UseLazyLoadingProxies()
+               .UseSqlServer("data source=localhost;Initial catalog=paradigmi;User Id=paradigmi;Password=paradigmi;TrustServerCertificate=True");
+
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

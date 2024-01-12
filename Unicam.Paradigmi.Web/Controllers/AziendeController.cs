@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Unicam.Paradigmi.Application.Abstractions.Services;
 using Unicam.Paradigmi.Application.Models.Requests;
+using Unicam.Paradigmi.Application.Models.Responses;
 using Unicam.Paradigmi.Application.Services;
+using Unicam.Paradigmi.Application.Validators;
 using Unicam.Paradigmi.Models.Entities;
 
 namespace Unicam.Paradigmi.Web.Controllers
@@ -36,9 +38,14 @@ namespace Unicam.Paradigmi.Web.Controllers
         [Route("new")]
         public IActionResult CreateAzienda(CreateAziendaRequest request)
         {
+            /*var validator = new CreateAziendaRequestValidator();
+            validator.Validate(request);*/
             var azienda = request.ToEntity();
             _aziendaService.AddAzienda(azienda);
-            return Ok();
+
+            var response = new CreateAziendaResponse();
+            response.Azienda = new Application.Models.Dtos.AziendaDto(azienda);
+            return Ok(response);
         } 
 
     }
