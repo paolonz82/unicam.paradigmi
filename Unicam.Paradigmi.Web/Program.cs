@@ -1,9 +1,12 @@
 
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Unicam.Paradigmi.Application.Abstractions.Services;
 using Unicam.Paradigmi.Application.Middlewares;
 using Unicam.Paradigmi.Application.Options;
 using Unicam.Paradigmi.Application.Services;
+using Unicam.Paradigmi.Models.Context;
+using Unicam.Paradigmi.Models.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<MyDbContext>(conf=>
+{
+    conf.UseSqlServer("data source=localhost;Initial catalog=paradigmi;User Id=paradigmi;Password=paradigmi;TrustServerCertificate=True");
+});
 builder.Services.AddScoped< IAziendaService, AziendaService >();
+builder.Services.AddScoped<AziendaRepository>();
 
 //Prendo il singolo valore
 string host = builder.Configuration

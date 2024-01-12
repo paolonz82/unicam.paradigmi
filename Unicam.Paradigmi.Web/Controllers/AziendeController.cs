@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Unicam.Paradigmi.Application.Abstractions.Services;
+using Unicam.Paradigmi.Application.Models.Requests;
+using Unicam.Paradigmi.Application.Services;
 using Unicam.Paradigmi.Models.Entities;
 
 namespace Unicam.Paradigmi.Web.Controllers
@@ -7,43 +10,34 @@ namespace Unicam.Paradigmi.Web.Controllers
     [Route("api/v1/[controller]")]
     public class AziendeController : ControllerBase
     {
-        List<Azienda> aziende = new List<Azienda>();
-        public AziendeController()
+        private readonly IAziendaService _aziendaService;
+        public AziendeController(IAziendaService aziendaService)
         {
-            aziende.Add(new Azienda()
-            {
-                IdAzienda = 1,
-                Citta = "Camerino",
-                RagioneSociale = "Unicam",
-                Cap = "12345"
-            });
-            aziende.Add(new Azienda()
-            {
-                IdAzienda = 2,
-                Citta = "Tolentino",
-                RagioneSociale = "PCSNET",
-                Cap = "54321"
-            });
+            _aziendaService = aziendaService;
         }
-
+        
+        
         [HttpGet]
         [Route("list")]
         public IEnumerable<Azienda> GetAziende()
         {
-            return aziende;
+            return null;
         }
 
         [HttpGet]
         [Route("get/{id:int}")]
         public Azienda GetAzienda(int id)
         {
-            return aziende.Where(w => w.IdAzienda == id).First();
+            //return aziende.Where(w => w.IdAzienda == id).First();
+            return null;
         }
 
         [HttpPost]
         [Route("new")]
-        public IActionResult CreateAzienda(Azienda azienda)
+        public IActionResult CreateAzienda(CreateAziendaRequest request)
         {
+            var azienda = request.ToEntity();
+            _aziendaService.AddAzienda(azienda);
             return Ok();
         } 
 
