@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Unicam.Paradigmi.Application.Abstractions.Services;
 using Unicam.Paradigmi.Application.Models.Requests;
 using Unicam.Paradigmi.Application.Models.Responses;
@@ -10,6 +12,7 @@ namespace Unicam.Paradigmi.Web.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AziendeController : ControllerBase
     {
         private readonly IAziendaService _aziendaService;

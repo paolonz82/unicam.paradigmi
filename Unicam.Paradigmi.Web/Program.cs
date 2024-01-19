@@ -1,9 +1,12 @@
 
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
+using System.Text;
 using System.Xml.Linq;
 using Unicam.Paradigmi.Application.Abstractions.Services;
 using Unicam.Paradigmi.Application.Middlewares;
@@ -33,6 +36,39 @@ builder.Services.AddDbContext<MyDbContext>(conf=>
 });
 builder.Services.AddScoped< IAziendaService, AziendaService >();
 builder.Services.AddScoped<AziendaRepository>();
+builder.Services.AddScoped<ITokenService,TokenService>();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(options =>
+    {
+        string key = "Unicam.ParadigmiChiave1234567890123";
+        var securityKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(key)
+            );
+        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+        {
+            ValidateIssuer = true,
+            ValidateLifetime = true,
+            ValidateAudience = false,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = "https://paradigmi.unicam.it",
+            IssuerSigningKey  = securityKey
+        };
+        options.Events = new JwtBearerEvents()
+        {
+            OnAuthenticationFailed = onAuthFailed
+        };
+    });
+
+Task onAuthFailed(AuthenticationFailedContext context)
+{
+    return Task.CompletedTask;
+}
 
 //Prendo il singolo valore
 string host = builder.Configuration
@@ -64,7 +100,7 @@ app.Use(async (HttpContext context, Func<Task> next) =>
 });
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
