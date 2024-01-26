@@ -15,6 +15,7 @@ namespace Unicam.Paradigmi.Application.Extensions
 
             services.AddScoped<IAziendaService, AziendaService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IEmailService, EmailService>();
             return services;
         }
     }

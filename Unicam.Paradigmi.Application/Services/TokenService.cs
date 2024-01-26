@@ -28,6 +28,7 @@ namespace Unicam.Paradigmi.Application.Services
             //TODO : Prendere le claims dal database
           
             List<Claim> claims = new List<Claim>();
+            claims.Add(new Claim("id_utente", "1"));
             claims.Add(new Claim("Nome", "Federico"));
             claims.Add(new Claim("Cognome", "Paoloni"));
             

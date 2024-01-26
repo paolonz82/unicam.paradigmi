@@ -2,10 +2,11 @@
 {
     public class EmailOption
     {
-        public string Host { get; set; }
-        public int Port { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string TenantId { get; set; }
+        public string ClientId { get; set; }
+        public string ClientSecret { get; set; }
+        public string From { get; set; }
         public List<string> Tos { get; set; }
+
     }
 }

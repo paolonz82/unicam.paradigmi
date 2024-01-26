@@ -27,7 +27,7 @@ namespace Unicam.Paradigmi.Application.Middlewares
             , IOptions<EmailOption> emailOption
             )
         {
-            Console.WriteLine(emailOption.Value.Host);
+            
             context.RequestServices.GetRequiredService<IAziendaService>();
             //Implementiamo il codice effettivo del nostro middleware
 

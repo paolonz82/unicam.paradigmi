@@ -20,7 +20,7 @@ namespace Unicam.Paradigmi.Web.Controllers
         [Route("create")]
         public IActionResult Create(CreateTokenRequest request)
         {
-            throw new Exception("Mia eccezione");
+            
             string token = _tokenService.CreateToken(request);
             return Ok(
                 ResponseFactory.WithSuccess(
