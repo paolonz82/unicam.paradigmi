@@ -2,7 +2,7 @@
 
 namespace Unicam.Paradigmi.Application.Models.Responses
 {
-    public class CreateAziendaResponse
+    public class CreateAziendaResponse 
     {
         public AziendaDto Azienda { get; set; } = null!;
     }

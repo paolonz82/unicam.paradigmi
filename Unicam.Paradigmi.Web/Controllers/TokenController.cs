@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Unicam.Paradigmi.Application.Abstractions.Services;
+using Unicam.Paradigmi.Application.Factories;
 using Unicam.Paradigmi.Application.Models.Requests;
+using Unicam.Paradigmi.Application.Models.Responses;
 using Unicam.Paradigmi.Application.Services;
 
 namespace Unicam.Paradigmi.Web.Controllers
@@ -18,9 +20,13 @@ namespace Unicam.Paradigmi.Web.Controllers
         [Route("create")]
         public IActionResult Create(CreateTokenRequest request)
         {
-            //STEP 0 : Validazione della richiesta
+            throw new Exception("Mia eccezione");
             string token = _tokenService.CreateToken(request);
-            return Ok(token);
+            return Ok(
+                ResponseFactory.WithSuccess(
+                    new CreateTokenResponse(token)
+                    )
+                );
         }
     }
 }

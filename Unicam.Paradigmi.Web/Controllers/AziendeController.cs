@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Unicam.Paradigmi.Application.Abstractions.Services;
+using Unicam.Paradigmi.Application.Factories;
 using Unicam.Paradigmi.Application.Models.Requests;
 using Unicam.Paradigmi.Application.Models.Responses;
 using Unicam.Paradigmi.Application.Services;
@@ -48,7 +49,9 @@ namespace Unicam.Paradigmi.Web.Controllers
 
             var response = new CreateAziendaResponse();
             response.Azienda = new Application.Models.Dtos.AziendaDto(azienda);
-            return Ok(response);
+            return Ok(ResponseFactory 
+                .WithSuccess(response)
+                );
         } 
 
     }
