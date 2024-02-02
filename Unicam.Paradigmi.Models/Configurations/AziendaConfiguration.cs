@@ -17,6 +17,10 @@ namespace Unicam.Paradigmi.Models.Configurations
             builder.HasKey(p => p.IdAzienda);
             builder.Property(p => p.RagioneSociale)
                 .HasMaxLength(100);
+
+            builder.Property(p => p.Tipo)
+                .HasColumnName("TipoAzienda")
+                .HasConversion<int>();
         }
     }
 }

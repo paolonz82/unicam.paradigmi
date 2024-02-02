@@ -25,6 +25,8 @@ namespace Unicam.Paradigmi.Models.Entities
         public string Citta { get; set; } = string.Empty;
         public string Cap { get; set; } = string.Empty;
 
+        public TipoAzienda Tipo { get; set; }
+
         public virtual ICollection<Dipendente> Dipendenti { get; set; } = null!;
 
     }
